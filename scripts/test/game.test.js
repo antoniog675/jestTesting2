@@ -1,3 +1,4 @@
+const { expect } = require('@jest/globals');
 const { game } = require('../game');
 
 beforeAll(() => {
@@ -21,4 +22,7 @@ describe('game object contains correct keys', () => {
     test('choices key exists', () => {
         expect('choices' in game).toBe(true);
     });
+    test('choice to contain correct ids', () => {
+        expect(game.choices).toEqual(['button1', 'button2', 'button3', 'button4'])
+    })
 });
