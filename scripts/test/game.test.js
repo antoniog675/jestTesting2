@@ -54,7 +54,13 @@ describe('newGame works correctly', () => {
     });
     test('turnNumber key exists', () => {
         expect('turnNumber' in game).toEqual(true);
-    })
+    });
+    test('expect data-listener to be true', () => {
+        const elements = document.getElementsByClassName('circle');
+        for (let element of elements) {
+            expect(element.getAttribute('data-listener')).toBe('true')
+        }
+    });
 })
 
 describe('gameplay to work correctly', () => {
