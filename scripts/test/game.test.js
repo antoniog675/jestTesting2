@@ -2,7 +2,8 @@
 /**
  * @jest-environment jsdom
  */
-const { game,  newGame, showScore, addTurn, lightsOn } = require('../game');
+
+const { game,  newGame, showScore, addTurn, lightsOn, showTurns } = require('../game');
 
 beforeAll(() => {
     let fs = require('fs');
@@ -50,6 +51,9 @@ describe('newGame works correctly', () => {
     });
     test('should display 0 for the element with the id of score', () => {
         expect(document.getElementById('score').innerText).toEqual(0);
+    });
+    test('turnNumber key exists', () => {
+        expect('turnNumber' in game).toEqual(true);
     })
 })
 
@@ -74,4 +78,9 @@ describe('gameplay to work correctly', () => {
         lightsOn(game.currentGame[0]);
         expect(button.classList).toContain('light');
     });
+    test('showTurns function should update game.turnNumber', () => {
+        game.turnNumber = 42;
+        showTurns();
+        expect(game.turnNumber).toEqual(0);
+    })
 })
