@@ -88,5 +88,10 @@ describe('gameplay to work correctly', () => {
         game.turnNumber = 42;
         showTurns();
         expect(game.turnNumber).toEqual(0);
-    })
-})
+    });
+    test('should increment the score if the turn is correct', () => {
+        game.playerMoves.push(game.currentGame[0]);
+        playerTurn();
+        expect(game.score).toBe(1);
+    });
+});

@@ -53,4 +53,13 @@ function showTurns() {
     }, 800)
 }
 
+function playerTurn() {
+    let i = game.playerMoves.length - 1;
+    if (game.currentGame[1] === game.playerMoves[1]) {
+        game.score++;
+        showScore();
+        addTurn();
+    }
+}
+
 module.exports = { game , newGame, showScore, addTurn, lightsOn, showTurns};
